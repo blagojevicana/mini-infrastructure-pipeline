@@ -10,7 +10,29 @@ This project demonstrates a **containerized Python API deployed on Kubernetes**,
 - NGINX reverse proxy & load balancing
 - GitHub Actions CI/CD pipeline for automated build & deployment
 
-## How to Run Locally
+**NGINX** distributes traffic between multiple Flask app instances running in **Kubernetes pods**.  
+The app is **containerized using Docker** and the image is built & pushed automatically via **GitHub Actions**.
+
+## GitHub Actions CI/CD
+
+- Automatically builds and pushes Docker image on every push to `main` branch.
+- Uses **Docker Hub secrets** for non-interactive login:
+  - `DOCKER_USERNAME`
+  - `DOCKER_PASSWORD`
+- Workflow path: `.github/workflows/ci-cd.yaml`
+
+> Kubernetes deployment is **run locally**.
+
+
+## Local Setup & Deployment
+
+### Prerequisites
+- Docker
+- Minikube or other local Kubernetes
+- kubectl
+- NGINX
+
+### Steps
 
 1. **Build Docker image:**
 ```bash
